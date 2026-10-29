@@ -1,7 +1,7 @@
 // date personale
 export const site = {
   name: "Alex",
-  role: "BI Developer",
+  role: "SQL Developer",
   location: "Bucharest",
   intro: "Engineer and MSc student in Bucharest. I work with SQL Server, Oracle, Python and Power BI.",
   email: "asapalecs@gmail.com",

@@ -79,7 +79,7 @@ export function Intro() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: (NAME.length * 65) / 1000, duration: 0.4 }}
               >
-                BI Developer
+                SQL Developer
               </motion.p>
             </>
           )}

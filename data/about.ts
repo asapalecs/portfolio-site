@@ -19,7 +19,7 @@ export const timeline: { year: string; entries: Entry[] }[] = [
   {
     year: "2024",
     entries: [
-      { kind: "Education", title: "MSc, Databases and Software Technologies", org: "University of Bucharest", period: "2024 – 2026", note: "Most projects on this site started here." },
+      { kind: "Education", title: "MSc, Databases and Software Technologies", org: "University of Bucharest", period: "2024 – Present", note: "Most projects on this site started here." },
     ],
   },
   {
