@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* doar tema light, clasa .dark nu e folosita */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-ink: #0b0b0c;        /* primary text, black UI */
+  --color-paper: #ffffff;      /* page background */
+  --color-panel: #f5f5f4;      /* cards and surfaces */
+  --color-line: #e7e5e4;       /* borders */
+  --color-muted: #6b6b6b;      /* secondary text */
+  --color-orange: #ff7900;     /* accent, used sparingly */
+  --color-orange-soft: #ffb066;
+
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  --animate-meteor-effect: meteor 5s linear infinite;
+
+  @keyframes scroll {
+    to { transform: translate(calc(-50% - 0.5rem)); }
+  }
+  @keyframes meteor {
+    0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  background: var(--color-paper);
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-feature-settings: "ss01", "tnum";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* intro deja vazut */
+html[data-intro="seen"] #intro { display: none; }
+
+::selection { background: var(--color-ink); color: #fff; }
+
+/* fundal cu puncte */
+.bg-dots {
+  background-image: radial-gradient(rgb(0 0 0 / 0.11) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
