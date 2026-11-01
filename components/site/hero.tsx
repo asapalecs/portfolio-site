@@ -8,6 +8,8 @@ import { site } from "@/data/site";
 import { Magnetic, Reveal } from "./motion-ux";
 import { projects } from "@/data/projects";
 
+const roles = ["data warehouses", "ETL pipelines", "Power BI reports", "KPI models"];
+
 export function Hero() {
   const flagship = projects.find((p) => p.featured)!;
 
@@ -28,7 +30,7 @@ export function Hero() {
         <h1 className="max-w-5xl text-5xl leading-[1.02] font-medium tracking-[-0.035em] text-ink sm:text-7xl md:text-[5.5rem]">
           I build{" "}
           <FlipWords
-            words={["data warehouses", "ETL pipelines", "Power BI reports", "KPI models"]}
+            words={roles}
             duration={2800}
             className="font-serif font-normal italic tracking-normal"
           />
@@ -42,7 +44,7 @@ export function Hero() {
             <Magnetic><MovingBorderButton as="a" href="#projects" borderRadius="9999px" duration={3500} containerClassName="block h-12 w-44" className="gap-2 text-sm font-medium">
               See my work <ArrowDownRight className="h-4 w-4" />
             </MovingBorderButton></Magnetic>
-            <a href={site.github} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-sm text-ink underline-offset-4 hover:underline">
+            <a href={site.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-ink underline-offset-4 hover:underline">
               GitHub <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

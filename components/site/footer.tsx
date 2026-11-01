@@ -1,4 +1,3 @@
-"use client";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { site } from "@/data/site";
 

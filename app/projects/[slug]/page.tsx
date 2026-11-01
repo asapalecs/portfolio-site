@@ -28,7 +28,14 @@ type Params = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const p = getProject((await params).slug);
-  return p ? { title: `${p.title} | Alex`, description: p.tagline } : {};
+  if (!p) return {};
+  const url = `/projects/${p.slug}/`;
+  return {
+    title: p.title,
+    description: p.tagline,
+    alternates: { canonical: url },
+    openGraph: { title: p.title, description: p.tagline, type: "article", url },
+  };
 }
 
 function Section({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
@@ -54,7 +61,7 @@ export default async function ProjectPage({ params }: Params) {
   return (
     <>
       <Nav />
-      <main className="px-4 pt-36 pb-12 sm:px-6">
+      <main id="main" className="px-4 pt-36 pb-12 sm:px-6">
         <TracingBeam className="px-2 md:px-6">
           <Link href="/#projects" className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-ink">
             <ArrowLeft className="h-4 w-4" /> All work

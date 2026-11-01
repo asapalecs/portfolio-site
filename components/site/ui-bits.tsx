@@ -1,4 +1,3 @@
-"use client";
 import { Reveal } from "./motion-ux";
 
 export function SectionHead({ n, label, title, className = "" }: { n: string; label: string; title: React.ReactNode; className?: string }) {

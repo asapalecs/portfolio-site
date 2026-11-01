@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useInView, useReducedMotion } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
 
 export const BackgroundBeamsWithCollision = ({
@@ -12,6 +12,8 @@ export const BackgroundBeamsWithCollision = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(parentRef, { margin: "200px" });
+  const reduce = useReducedMotion();
 
   const beams = [
     {
@@ -74,7 +76,7 @@ export const BackgroundBeamsWithCollision = ({
         className
       )}
     >
-      {beams.map((beam) => (
+      {inView && !reduce && beams.map((beam) => (
         <CollisionMechanism
           key={beam.initialX + "beam-idx"}
           beamOptions={beam}
@@ -160,16 +162,13 @@ const CollisionMechanism = React.forwardRef<
   }, [cycleCollisionDetected, containerRef]);
 
   useEffect(() => {
-    if (collision.detected && collision.coordinates) {
-      setTimeout(() => {
-        setCollision({ detected: false, coordinates: null });
-        setCycleCollisionDetected(false);
-      }, 2000);
-
-      setTimeout(() => {
-        setBeamKey((prevKey) => prevKey + 1);
-      }, 2000);
-    }
+    if (!collision.detected || !collision.coordinates) return;
+    const t = setTimeout(() => {
+      setCollision({ detected: false, coordinates: null });
+      setCycleCollisionDetected(false);
+      setBeamKey((prevKey) => prevKey + 1);
+    }, 2000);
+    return () => clearTimeout(t);
   }, [collision]);
 
   return (

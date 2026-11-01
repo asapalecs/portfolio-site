@@ -32,8 +32,8 @@ export const Meteors = ({
             style={{
               top: "-40px",
               left: position + "px",
-              animationDelay: Math.random() * 5 + "s",
-              animationDuration: Math.floor(Math.random() * (10 - 5) + 5) + "s",
+              animationDelay: ((idx * 1.37) % 5).toFixed(2) + "s",
+              animationDuration: 5 + ((idx * 7) % 5) + "s",
             }}
           ></span>
         );

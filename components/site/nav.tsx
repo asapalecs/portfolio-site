@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { FolderGit2, Workflow, Wrench, User } from "lucide-react";
 import { FloatingNav } from "@/components/ui/floating-navbar";

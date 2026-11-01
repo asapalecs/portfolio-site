@@ -15,7 +15,11 @@ export function SmoothScroll() {
     let id = 0;
     const raf = (t: number) => { lenis.raf(t); id = requestAnimationFrame(raf); };
     id = requestAnimationFrame(raf);
-    return () => { cancelAnimationFrame(id); lenis.destroy(); };
+    return () => {
+      cancelAnimationFrame(id);
+      lenis.destroy();
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
+    };
   }, []);
   return null;
 }

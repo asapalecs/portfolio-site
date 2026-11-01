@@ -48,6 +48,11 @@ html[data-intro="seen"] #intro { display: none; }
 
 ::selection { background: var(--color-ink); color: #fff; }
 
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
 /* fundal cu puncte */
 .bg-dots {
   background-image: radial-gradient(rgb(0 0 0 / 0.11) 1px, transparent 1px);
@@ -56,5 +61,6 @@ html[data-intro="seen"] #intro { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  #intro { display: none; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
